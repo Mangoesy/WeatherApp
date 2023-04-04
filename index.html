@@ -1,0 +1,123 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather App</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/50116b98e2.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="body-Container">
+      <div class="menu">
+        aa
+      </div>
+      <div class="addCity">
+        <input type="text" placeholder="Search..">
+      </div>
+      <div class="header">
+        <div class="header-Menu">
+          <i class="fa-sharp fa-solid fa-bars"></i>
+        </div>
+        <div class="header-Title">
+          WeatherApp
+        </div>
+        <div class="header-Add">
+          <i class="fa-solid fa-circle-plus"></i>
+        </div>
+      </div>
+      <div class="weatherInfo">
+        <div class="weatherInfo-City">
+          City
+        </div>
+        <div class="weatherInfo-Date">
+          Saturday, February 14, 2023
+        </div>
+        <div class="weatherInfo-Temperature">
+          <span class="Temperature">20</span><span>°</span><span class="TemperatureC">c</span>
+        </div>
+        <div class="weatherInfo-Divider"></div>
+        <div class="weatherInfo-Condition">
+          Sunny
+        </div>
+      </div>
+      <div class="restInfo">
+        <div class="restInfo-Row">
+          <div class="restInfo-Row-Container">
+            <img class="restInfo-Row-Container-Image" src="" />
+            <div class="restInfo-Row-Container-Temp">
+              Today
+            </div>
+          </div>
+          <div class="restInfo-Row-Container">
+            <img class="restInfo-Row-Container-Image" src="" />
+            <div class="restInfo-Row-Container-Temp">
+              day
+            </div>
+          </div>
+          <div class="restInfo-Row-Container">
+            <img class="restInfo-Row-Container-Image" src="" />
+            <div class="restInfo-Row-Container-Temp">
+              day
+            </div>
+          </div>
+        </div>
+        <div class="restInfo-ExtraButton">
+          coming
+        </div>
+      </div>
+    </div>
+	<script src="index.js"></script>
+  <script>
+    $('input[type="text"]').keypress(function(event) {
+      if (event.which === 13) {
+        getWeatherData($(this).val());
+        $(this).val('');
+        $('.addCity').removeClass('active');
+      }
+    });
+    $('.header-Menu').click(function() {
+      const myDiv = $('.header-Menu');
+      myDiv.addClass('rotated');
+      $('.menu').show();
+
+      setTimeout(()=>{
+        $('.menu').css('width', '300px');
+      setTimeout(() => {
+        $('.menu').css('transition', 'width 1s cubic-bezier(.19, 1, .22, 1)');
+      }, 10);
+      }, 450);
+    });
+    
+    $('.header-Add').click(function() {
+      $('.header-Add').css({
+        transform: 'rotate(360deg)',
+        transition: 'transform 1s cubic-bezier(.19, 1, .22, 1)'
+      });
+
+      if ($('.addCity').hasClass('active')) {
+        $('.addCity').removeClass('active');
+      } else {
+        $('.addCity').addClass('active');
+      }
+      
+      
+      // Reset the rotation after 1 second
+      setTimeout(function(){
+        $('.header-Add').css({
+          transform: 'rotate(0deg)',
+          transition: 'none'
+        });
+      }, 1000);
+    });
+  </script>
+  </body>
+</html>
